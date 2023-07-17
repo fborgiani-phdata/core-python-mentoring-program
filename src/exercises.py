@@ -31,8 +31,12 @@ def generate_fibonacci(index: int) -> List[int]:
 # return the array with the duplicate values removed.
 # [8, 13, 13, 9, 11, 12] → [8, 13, 9, 11, 12]
 def array_deduplication(int_arr: List[int]) -> List[int]:
-    return []
-
+    no_dupicates_arr = []
+    for i in int_arr:
+        if i not in no_dupicates_arr:
+            no_dupicates_arr.append(i)
+            
+    return no_dupicates_arr
 
 # Given an integer array,
 # return the array sorted lowest to highest.
