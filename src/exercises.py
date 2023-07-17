@@ -4,21 +4,28 @@ from typing import List
 # Given an array of integer values,
 # return the array in reverse order
 def flip_array(arr: List[int]) -> List[int]:
-    return []
+    return arr[::-1]
 
 
 # Given an array of integer values,
 # return the count of even integers in the array
 def count_evens(arr: List[int]) -> List[int]:
-    return []
+    return len([i for i in arr if i % 2 == 0]) 
 
 
 # Given 'n' Fibonacci index,
 # return an array representing the fibonacci numbers inclusive
 # 6 -> [0,1,2,3,5,8,13]
 def generate_fibonacci(index: int) -> List[int]:
-    return []
-
+    sequence_fibonacci = [0,1]
+    
+    while len(sequence_fibonacci) <= index:
+        sequence_fibonacci.append(sequence_fibonacci[-1] + sequence_fibonacci[-2]) 
+        
+    if index > 2:
+        return sequence_fibonacci
+    elif index <= 2:
+        return sequence_fibonacci[:index + 1]
 
 # Given an integer array,
 # return the array with the duplicate values removed.
