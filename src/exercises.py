@@ -44,7 +44,7 @@ def array_deduplication(int_arr: List[int]) -> List[int]:
 # don't use the sorted() function
 # [8, 13, 9, 12] → [8, 9, 12, 13]
 def array_sort(arr: List[int]) -> List[int]:
-    return []
+    return list(set(arr))
 
 
 # Given 2 arrays A and B,
