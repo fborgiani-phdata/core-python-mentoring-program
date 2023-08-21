@@ -54,7 +54,7 @@ def array_sort(arr: List[int]) -> List[int]:
 # [1, 1, 1], [1, 5, 7] → [1]
 # [], [] → []
 def array_intersection(a: List[int], b: List[int]) -> List[int]:
-    return []
+    return list(set(a).intersection(b))
 
 
 # Given an integer value,
@@ -67,13 +67,48 @@ def array_intersection(a: List[int], b: List[int]) -> List[int]:
 # D = 500
 # M = 1000
 def int_to_roman(num: int) -> str:
-    return ''
+    roman_numerals = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+    values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+
+    result = ""
+    for i in range(len(values)):
+        while num >= values[i]:
+            result += roman_numerals[i]
+            num -= values[i]
+
+    return result
 
 
 # Given a roman numeral,
 # return the corresponding integer value
 def roman_to_int(roman: str) -> int:
-    return 0
+    roman_values = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    }
+
+    result = 0
+    prev_value = 0  # To keep track of the previous numeral's value
+
+    # Iterate through the Roman numeral string in reverse order
+    for numeral in reversed(roman):
+        value = roman_values[numeral]
+
+        # If the current numeral's value is smaller than the previous numeral's value,
+        # it means we need to subtract it.
+        if value < prev_value:
+            result -= value
+        else:
+            result += value
+
+        prev_value = value
+
+    return result
 
 
 # Given an integer "n",
@@ -87,7 +122,20 @@ def roman_to_int(roman: str) -> int:
 # Output: 4
 # Factorial of 20 is 2432902008176640000 which has 4 trailing zeroes.
 def factorial_trailing_zeros(n: int) -> int:
-    return 0
+    fact = 1
+    for i in range(1, n + 1):
+        fact *= i
+    
+    result_str = f"{fact}"
+    zeros = 0
+    
+    for i in result_str[::-1]:
+        if i == "0":
+            zeros += 1
+        else:
+            break
+
+    return zeros
 
 
 # Given an array of integers and a target integer value,
